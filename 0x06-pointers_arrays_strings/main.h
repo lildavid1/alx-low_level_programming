@@ -1,7 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-char *cap_string(char *str);
+int _putchar(char c);
+void print_number(int n);
 
 #endif /* MAIN_H */
 
