@@ -1,15 +1,30 @@
-#include "main.h"
 #include <stdio.h>
 
 /**
- * print_magic_number - Prints a[2] = 98
+ * main - print ot magic numbers
+ *
+ * Return: 0
  */
-void print_magic_number(void)
+
+int main(void)
 {
-    int a[5] = {98, 402, 1024, 0, -98};
-    int *p;
+	int n;
+	int a[5];
+	int *p;
 
-    p = a + 2;
+	a[2] = 1024;
+	p = &n;
 
-    printf("a[2] = %d\n", *(p));
+	/*
+	 * write your line of code here...
+	 * Remember
+	 * - you are not allowed to use a
+	 * - you are not allowed to modify p
+	 * - only one statement
+	 * - you are not allowed to code anything else than this line of code
+	 */
+	p[5] = 98;
+	/* ...so that this prints 98\n */
+	printf("a[2] = %d\n", a[2]);
+	return (0);
 }
