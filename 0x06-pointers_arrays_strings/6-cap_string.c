@@ -1,42 +1,37 @@
-tring - a function that capitalizes
- *		all words of a string
- *
- * @s: pointer to char input array
- *
- * Return: @s
- */
-char *cap_string(char *s)
-{
-	int i = 0;
+#include <ctype.h>
 
-	/*iterate through our array values*/
-	while (s[i] != '\0')
-	{
-		/*check for any lowercase letters*/
-		if (s[i] >= 97 && s[i] <= 122)
-		{
-			/**
-			 * if we have a null character
-			 * change its value to capital
-			 */
-			if (i == 0)
-			{
-				s[i] -= 32;
-			}
-			/**
-			 * if we find any character matching the below before any small
-			 * letter we change that value to a capital letter.
-			 */
-			if (s[i - 1] == 32 || s[i - 1] == 9 || s[i - 1] == 10 ||
-					s[i - 1] == 44 || s[i - 1] == 59 || s[i - 1] == 46 ||
-					s[i - 1] == 33 || s[i - 1] == 63 || s[i - 1] == 34 ||
-					s[i - 1] == 40 || s[i - 1] == 41 || s[i - 1] == 123 ||
-					s[i - 1] == 124)
-			{
-				s[i] -= 32;
-			}
-		}
-		i++;
-	}
-	return (s);
+char *cap_string(char *str)
+{
+    int i = 0;
+    int capitalize_next = 1;  // Flag to indicate if the next character should be capitalized
+
+    while (str[i] != '\0')
+    {
+        if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == ',' ||
+            str[i] == ';' || str[i] == '.' || str[i] == '!' || str[i] == '?' ||
+            str[i] == '"' || str[i] == '(' || str[i] == ')' || str[i] == '{' ||
+            str[i] == '}')
+        {
+            capitalize_next = 1;
+        }
+        else if (capitalize_next && islower(str[i]))
+        {
+            str[i] = toupper(str[i]);
+            capitalize_next = 0;
+        }
+
+        i++;
+    }
+
+    return str;
 }
+In this implementation, we iterate over each character in the string. Whenever we encounter a separator character, we set the capitalize_next flag to 1, indicating that the next character should be capitalized. If the flag is set and the current character is a lowercase letter, we capitalize it using the toupper function.
+
+You can use this function in your program to capitalize the words in a given string.
+
+
+
+
+
+
+
